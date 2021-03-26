@@ -7,17 +7,9 @@ const toolsController = new ToolsController;
 
 toolsRouter.post('/', toolsController.create);
 
-toolsRouter.get('/', async (request, response) => {
-    return response.json({message: 'funciona'});
-});
+toolsRouter.get('/', toolsController.showAll);
 
 /*
-toolsRouter.get('/', async (request, response) => {
-    const findTools = getCustomRepository(ToolsRepository);
-    const tools = await findTools.find();
-    return response.json(tools)
-});
-
 toolsRouter.delete('/', async (request, response) => {
     const findTools = getCustomRepository(ToolsRepository);
     const tools = await findTools.delete({id:request.params.id});
