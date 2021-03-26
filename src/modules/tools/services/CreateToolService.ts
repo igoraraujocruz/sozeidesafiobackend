@@ -18,6 +18,12 @@ class CreateToolService {
 
     public async execute({title, link, description, tags}: IRequestDTO): Promise<Tools> {
 
+        const findTheSameTool = await this.toolsRepository.findByTitle(title)
+
+        if(findTheSameTool) {
+            throw new AppError('This tool already exists in our database')
+        }
+
         const createTool = await this.toolsRepository.create({
             title,
             link,

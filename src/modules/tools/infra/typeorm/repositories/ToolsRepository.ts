@@ -18,6 +18,14 @@ class ToolsRepository implements IToolsReposiroty {
 		return user;
 	}
 
+  public async findByTitle(title: string): Promise<Tools | undefined> {
+		const findTitle = await this.ormRepository.findOne({
+      where: {title},
+    });
+
+		return findTitle;
+	}
+
     public async save(tool: Tools): Promise<Tools> {
 		return this.ormRepository.save(tool);
 	}
