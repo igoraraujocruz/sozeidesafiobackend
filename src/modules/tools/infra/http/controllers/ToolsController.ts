@@ -16,8 +16,10 @@ export default class ToolsController {
 
     public async showAll(request: Request, response: Response): Promise<Response> {
 
+        const {tag} = request.query;
+        console.log(tag)
         const listTools = container.resolve(ListToolsService)
-        const tool = await listTools.execute()
+        const tool = await listTools.execute(tag)
         return response.json(tool);
 
     }
