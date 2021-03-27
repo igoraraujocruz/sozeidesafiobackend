@@ -2,7 +2,6 @@ import Tools from '@modules/tools/infra/typeorm/entities/Tools';
 import IToolsReposiroty from '@modules/tools/repositories/IToolsRepository';
 import { Repository, getRepository } from 'typeorm'; 
 import ICreateToolDTO from '@modules/tools/dtos/ICreateToolDTO';
-import { response } from 'express';
 
 
 class ToolsRepository implements IToolsReposiroty {
@@ -39,11 +38,19 @@ class ToolsRepository implements IToolsReposiroty {
 		return findId;
 	}
 
-  public async findAllTools(): Promise<Tools[]> {
-		const tools = await this.ormRepository.find();
+  public async findAllTools(tag?:string): Promise<Tools[]> {
+		let tools: Tools[];	
+
+		if(tag) {
+			tools = await this.ormRepository.find({
+				where: {tag}
+			});
+		} else {
+			tools = await this.ormRepository.find();
+		}
 
 		return tools;
-	}
+ }
 
     public async save(tool: Tools): Promise<Tools> {
 		return this.ormRepository.save(tool);

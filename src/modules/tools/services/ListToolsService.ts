@@ -1,7 +1,10 @@
 import { injectable, inject } from 'tsyringe';
-import AppError from '@shared/errors/AppError';
 import IToolsRepository from '@modules/tools/repositories/IToolsRepository';
 import Tools from '@modules/tools/infra/typeorm/entities/Tools';
+
+interface IRequestDTO {
+    tag: string;
+}
 
 @injectable()
 class ListToolsService {
@@ -10,8 +13,8 @@ class ListToolsService {
         private toolsRepository: IToolsRepository
     ) {}
 
-    public async execute(): Promise<Tools[]> {
-        const tool = await this.toolsRepository.findAllTools();
+    public async execute({tag}:IRequestDTO): Promise<Tools[]> {
+        const tool = await this.toolsRepository.findAllTools(tag);
         return tool;
     }
 }

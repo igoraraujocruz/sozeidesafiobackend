@@ -14,10 +14,11 @@ export default class ToolsController {
 
     }
 
-    public async showAll(request: Request, response: Response): Promise<Response> {
+    public async showTools(request: Request, response: Response): Promise<Response> {
 
+        const {tag} = request.query;
         const listTools = container.resolve(ListToolsService)
-        const tool = await listTools.execute()
+        const tool = await listTools.execute(tag)
         return response.json(tool);
 
     }
@@ -26,8 +27,8 @@ export default class ToolsController {
 
         const {id} = request.params;
         const listTools = container.resolve(DeleteToolService)
-        const tool = await listTools.execute(id)
-        return response.json(tool).status(204);
+        await listTools.execute(id)
+        return response.json({message:"The tool has been successfully deleted"}).status(200);
 
     }
 }
