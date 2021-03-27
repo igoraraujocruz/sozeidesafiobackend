@@ -1,8 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IToolsRepository from '@modules/tools/repositories/IToolsRepository';
-import Tools from '@modules/tools/infra/typeorm/entities/Tools';
-import { response } from 'express';
 
 @injectable()
 class DeleteToolService {
@@ -16,8 +14,8 @@ class DeleteToolService {
         if(!tool) {
             throw new AppError('Tool not Found');
         }
-
         await this.toolsRepository.delete(id);
+        
     }
 }
 

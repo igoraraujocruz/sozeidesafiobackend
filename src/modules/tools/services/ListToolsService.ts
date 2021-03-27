@@ -1,5 +1,4 @@
 import { injectable, inject } from 'tsyringe';
-import AppError from '@shared/errors/AppError';
 import IToolsRepository from '@modules/tools/repositories/IToolsRepository';
 import Tools from '@modules/tools/infra/typeorm/entities/Tools';
 
