@@ -9,6 +9,8 @@ toolsRouter.post('/', toolsController.create);
 
 toolsRouter.get('/', toolsController.showAll);
 
+toolsRouter.delete('/:id', toolsController.delete);
+
 /*
 toolsRouter.delete('/', async (request, response) => {
     const findTools = getCustomRepository(ToolsRepository);

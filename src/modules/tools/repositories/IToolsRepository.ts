@@ -5,4 +5,6 @@ export default interface IToolsReposiroty {
     create(data: ICreateToolDTO): Promise<Tools>
     findByTitle(title: string): Promise<Tools | undefined>
     findAllTools(): Promise<Tools[]>
+    findById(id: string): Promise<Tools | undefined>
+    delete(id: string): Promise<void | null>
 }
