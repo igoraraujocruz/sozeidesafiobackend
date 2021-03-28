@@ -52,7 +52,7 @@ $ yarn
 $ yarn migrations:run
 
 # Execute a aplicação.
-$ yarn start 
+$ yarn dev:server 
 
 # A aplicação irá iniciar na porta: 3000.
 
