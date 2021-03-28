@@ -38,12 +38,12 @@ class ToolsRepository implements IToolsReposiroty {
 		return findId;
 	}
 
-  public async findAllTools(tag?:string): Promise<Tools[]> {
+  public async findAllTools(tags?:string): Promise<Tools[]> {
 		let tools: Tools[];	
 
-		if(tag) {
+		if(tags) {
 			tools = await this.ormRepository.find({
-				where: {tag}
+				where: {tags}
 			});
 		} else {
 			tools = await this.ormRepository.find();

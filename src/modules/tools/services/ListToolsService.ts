@@ -3,7 +3,7 @@ import IToolsRepository from '@modules/tools/repositories/IToolsRepository';
 import Tools from '@modules/tools/infra/typeorm/entities/Tools';
 
 interface IRequestDTO {
-    tag: string;
+    tag?: string;
 }
 
 @injectable()

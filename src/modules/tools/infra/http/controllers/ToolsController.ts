@@ -4,6 +4,7 @@ import CreateToolService from '@modules/tools/services/CreateToolService'
 import ListToolsService from '@modules/tools/services/ListToolsService';
 import DeleteToolService from '@modules/tools/services/DeleteToolService';
 
+
 export default class ToolsController {
     public async create(request: Request, response: Response): Promise<Response> {
 
@@ -16,7 +17,7 @@ export default class ToolsController {
 
     public async showTools(request: Request, response: Response): Promise<Response> {
 
-        const {tag} = request.query;
+        const tag = request.query;
         const listTools = container.resolve(ListToolsService)
         const tool = await listTools.execute(tag)
         return response.json(tool);
