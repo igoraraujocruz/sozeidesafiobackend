@@ -11,6 +11,9 @@
 - [x] O usuário deve poder remover uma ferramenta por ID.
 </br></br>
 
+### Documentação em formato Swagger:
+http://localhost:3000/swagger/
+
 ### Rotas da Aplicação
 </br>
 
