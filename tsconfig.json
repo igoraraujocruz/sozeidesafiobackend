@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",                          
-    "module": "commonjs",                     
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,               
      "outDir": "./dist",                        
      "rootDir": "./src",                       
     "strict": true,                           
@@ -11,8 +13,7 @@
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"]
-      },                          
-    "esModuleInterop": true,                  
+      },                                            
      "experimentalDecorators": true,        
      "emitDecoratorMetadata": true,         
     "skipLibCheck": true,                     

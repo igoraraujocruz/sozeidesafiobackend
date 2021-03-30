@@ -4,6 +4,8 @@ import 'express-async-errors';
 import routes from '@shared/infra/http/routes';
 import {Request, Response, NextFunction} from 'express';
 import AppError from '@shared/errors/AppError';
+import swaggerUI from 'swagger-ui-express';
+import * as swaggerDocument from '@shared/infra/swagger/swagger.json';
 import '../typeorm';
 import '@shared/container';
 
@@ -32,5 +34,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
 
 
 app.listen(3000, () => {
+	app.use('/swagger', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
     console.log("Olá Sozei :D")
 });

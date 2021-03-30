@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "host": "localhost:3000",
+  "basePath": "/",
+  "info": {
+    "version": "1.0.0",
+    "title": "Sozei API",
+    "description": "Challenge of the Sozei company",
+    "termsOfService": "http://localhost:3000/sozei/v1/termo-uso",
+    "contact": {
+      "name": "Support",
+      "url": "http://localhost:3000/sozei/v1/support",
+      "email": "support@sozei.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "paths": {
+    "/tools": {
+      "post": {
+        "summary": "Create tool",
+        "description": "creates a new tool",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "createTool",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tool",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Insomnia"
+                },
+                "link": {
+                  "type": "string",
+                  "example": "www.insomnia.com"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "great"
+                },
+                "tags": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Tool successfully created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Insomnia"
+                },
+                "link": {
+                  "type": "string",
+                  "example": "www.insomnia.com"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "great"
+                },
+                "tags": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Show all tools or tools based on tags",
+        "description": "show tool",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "showTool",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tool(s) find",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tools/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "description": "Remove tool"
+        }
+      ],
+      "delete": {
+        "summary": "Delete Tools",
+        "responses": {
+          "204": {
+            "description": "Tool successfully deleted"
+          },
+          "400": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }  
+  }
+}
