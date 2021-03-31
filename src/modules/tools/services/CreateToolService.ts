@@ -7,7 +7,7 @@ interface IRequestDTO {
     title: string;
     link: string;
     description: string;
-    tags: string;
+    tags: [];
 }
 
 @injectable()
