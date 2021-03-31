@@ -22,7 +22,7 @@ Retornará com todos os objetos cadastrados.
 </br></br>
 
 GET: localhost:3000/tools/?tag=</br>
-Enviando um parâmetro para a rota, será feito um filtro e retornará apenas os objetos que satisfaçam.
+Enviando um parâmetro para a rota, será feito um filtro e retornará apenas os objetos que satisfaçam. Caso não encontre o parâmetro, retornará uma mensagem de erro.
 </br></br>
 
 POST: localhost:3000/tools/</br>
