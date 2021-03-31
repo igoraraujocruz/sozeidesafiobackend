@@ -1,6 +1,6 @@
 import Tools from '@modules/tools/infra/typeorm/entities/Tools';
 import IToolsReposiroty from '@modules/tools/repositories/IToolsRepository';
-import { Repository, getRepository } from 'typeorm'; 
+import { Repository, getRepository, Like } from 'typeorm'; 
 import ICreateToolDTO from '@modules/tools/dtos/ICreateToolDTO';
 
 
@@ -44,7 +44,7 @@ class ToolsRepository implements IToolsReposiroty {
 
 		if(tags) {
 			tools = await this.ormRepository.find({
-				where: {tags}
+				where: {tags: Like(`%${tags}%`)}
 			});
 		} else {
 			tools = await this.ormRepository.find();
